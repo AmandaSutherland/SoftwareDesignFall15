@@ -30,9 +30,15 @@ def delete_introduction_ending(full_text):
 	print'headers are gone'
 	return no_intro
 
+# this function finds the chapter headers, but doesn't return anything
+# or do anything with that information?  what is its purpose?
 def find_chapter(stripped_text):
 #finds the chapter titles in the book 
 	indices = [m.start() for m in re.finditer('Chapter', stripped_text)]
+	# 17 is a magic number here - I'm guessing you looked at the 
+	# book or the indices list to determine it has 17 chapters.
+	# which means this function won't work organically for any other book
+	# this could be fixed by simply replacing the 17 by len(indices)
 	for i in range(17):
 		m = stripped_text[indices[i]:indices[i]+len("Chapter xx")] 
 		# print m 
@@ -43,7 +49,9 @@ def chapter_split(Peter_Pan_full_text):
 	print'split into chapters!'
 	# print chapter
 	# print chapter[1]
-	print len(chapter)
+	# these kinds of debugging print statements are /great/ for you and debugging as you work
+	# but could be removed for the final version
+	print len(chapter) # why does this print 35 if there are 17 chapters?
 	return chapter
 
 	
@@ -53,6 +61,7 @@ def parts_of_speech(chapters):
 	# for i in range(len(chapters)):
 
 	full_text_parts_speech = word_tokenize(chapters)
+	# this variable is called chapters but is actually just the original no_intro string
 	Peter_Pan_parsed_nltk = nltk.pos_tag(full_text_parts_speech)
 	print'text tagged!'
 	print type(Peter_Pan_parsed_nltk)
@@ -79,12 +88,18 @@ def find_common_nouns(parsed_text):
 # 	vusual = nx.to_dict_of_dicts(graph)
 # 	print visual
 
+
+# fantastic job with the modularization!
 Peter_Pan_full_text = get_book()
 no_intro = delete_introduction_ending(Peter_Pan_full_text)	
 # no_intro_ending = find_delete_ending(no_intro)
 chapter_find = find_chapter(no_intro)
+# you assign the return value of the find_chapter function to a variable,
+# but that function doesn't return anything
+
 # find_chapter_fullname(Peter_Pan_full_text)
 split_chapters = chapter_split(no_intro)
+# same as above - you split the chapters into a list but never use this variable
 POS = parts_of_speech(no_intro)
 find_nouns = find_common_nouns(POS)
 # visualization(POS)
