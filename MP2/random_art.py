@@ -10,13 +10,15 @@ from random import randint
 import Image
 
 def build_random_function(min_depth, max_depth):
-    """ your doc string goes here
+    """ Creates a 'random' function. 
     """
 
-    # your code goes here
+    # Various functions to create the nested function
+     ["prod", ["x"], ["y"]]
+     
 
 def evaluate_random_function(f, x, y):
-    """ your doc string goes here
+    """ Evaluates the function created in build_random_function
     """
 
     # your code goes here
@@ -29,6 +31,13 @@ def remap_interval(val, input_interval_start, input_interval_end, output_interva
         TODO: please fill out the rest of this docstring
     """
     # your code goes here
+
+  #how should I make build_random_function go through three times, once for each color?
+  #creates blank image with a given length and width of pixels
+  from PIL import Image
+  length = 350 
+  width = 350
+  image = Image.new("RGB",(length,width))
     
 
 
