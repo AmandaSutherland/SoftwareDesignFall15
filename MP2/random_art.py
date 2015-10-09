@@ -31,6 +31,14 @@ def build_random_function(min_depth, max_depth):
     a = build_random_function(min_depth-1, max_depth-1)
     b = build_random_function(min_depth-1, max_depth-1)
 
+    #creating the list of functions
+    functions = [["prod", a, b],
+                ["cos_pi", a],
+                ["sin_pi", a],
+                ["x"],
+                ["y"]]
+   
+
 def evaluate_random_function(f, x, y):
     """ Evaluates the function created in build_random_function
     """
