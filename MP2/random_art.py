@@ -5,17 +5,31 @@ Random_art.py
 @author: amonmillner, adapted from pruvolo work
 """
 
-# you do not have to use these particular modules, but they may help
 from random import randint
 import Image
 
 def build_random_function(min_depth, max_depth):
-    """ Creates a 'random' function. 
+    """ Recursion!
+        Creates a string that represents a function comprised of simple functions.
     """
 
-    # Various functions to create the nested function
-     ["prod", ["x"], ["y"]]
-     
+    # Describe the depths of functions
+
+    # Determines the case where a random function should not be built
+  if max_depth == 1:
+    # list of input strings
+    no_input = [["x"], ["y"]] 
+    # describes function inputs a and b
+    # randint(0,2) gives you an interger from 0 to 2
+    a = no_input[randint(0,2)] #
+    b = no_input[randint(0,2)]
+
+    # Determines the case in which to create a random function 
+  else:
+    #desribes function inputs a and b
+    #takes the depths -1 so it can start building from the right level? TODO
+    a = build_random_function(min_depth-1, max_depth-1)
+    b = build_random_function(min_depth-1, max_depth-1)
 
 def evaluate_random_function(f, x, y):
     """ Evaluates the function created in build_random_function
