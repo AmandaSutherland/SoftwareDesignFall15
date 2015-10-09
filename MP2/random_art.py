@@ -44,24 +44,28 @@ def build_random_function(min_depth, max_depth):
   else:
     i = randint(0,4)
 
+# def build_random_lambda(min_depth, max_depth):
+#   """ Same concept as build_random_function. 
+#       No need for evaluate_random_function as the lambda does that already. 
+#   """
+#     prod = lambda a,b: a*b
+#     cos_pi = lambda a: cos(a)
+#     sin_pi = lambda a: sin(a)
+
+#     functions = [[prod],
+#                 [cos_pi],
+#                 [sin_pi],
+#                 [x],
+#                 [y]]
+
+#     # choose function to return, then return it
+#     if max_depth == 1:
+#       i = randint() TODO
+
+
 def evaluate_random_function(f, x, y):
     """ Evaluates the function created in build_random_function.
-        Uses lambda functions. 
     """
-    prod = lambda a,b: a*b
-    cos_pi = lambda a: cos(a)
-    sin_pi = lambda a: sin(a)
-
-    functions = [[prod],
-                [cos_pi],
-                [sin_pi],
-                [x],
-                [y]]
-
-    # choose function to return, then return it
-    if max_depth == 1:
-      
-
 def remap_interval(val, input_interval_start, input_interval_end, output_interval_start, output_interval_end):
     """ Maps the input value that is in the interval [input_interval_start, input_interval_end]
         to the output interval [output_interval_start, output_interval_end].  The mapping
