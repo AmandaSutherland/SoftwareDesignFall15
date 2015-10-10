@@ -16,33 +16,34 @@ def build_random_function(min_depth, max_depth):
     # Describe the depths of functions
 
     # Determines the case where a random function should not be built
-  if max_depth == 1:
-    # list of input strings
-    no_input = [["x"], ["y"]] 
-    # describes function inputs a and b
-    # randint(0,2) gives you an interger from 0 to 2
-    a = no_input[randint(0,2)] #
-    b = no_input[randint(0,2)]
+    if max_depth == 1:
+        # list of input strings
+        no_input = [["x"], ["y"]] 
+        # describes function inputs a and b
+        # randint(0,2) gives you an interger from 0 to 2
+        a = no_input[randint(0,2)] 
+        b = no_input[randint(0,2)]
+        print 
 
     # Determines the case in which to create a random function 
-  else:
-    #desribes function inputs a and b
-    #takes the depths -1 so it can start building from the right level? TODO
-    a = build_random_function(min_depth-1, max_depth-1)
-    b = build_random_function(min_depth-1, max_depth-1)
+    else:
+        #desribes function inputs a and b
+        #takes the depths -1 so it can start building from the right level? TODO
+        a = build_random_function(min_depth-1, max_depth-1)
+        b = build_random_function(min_depth-1, max_depth-1)
 
-  #creating the list of functions
-  functions = [["prod", a, b],
+    #creating the list of functions
+    functions = [["prod", a, b],
               ["cos_pi", a],
               ["sin_pi", a],
               ["x"],
               ["y"]]
 
-  #choose which function to go with 
-  if min_depth > 1:
-    i = randint(0,2)
-  else:
-    i = randint(0,4)
+    #choose which function to go with 
+    if min_depth > 1:
+        i = randint(0,2)
+    else:
+        i = randint(0,4)
 
 # def build_random_lambda(min_depth, max_depth):
 #   """ Same concept as build_random_function. 
@@ -65,7 +66,20 @@ def build_random_function(min_depth, max_depth):
 
 def evaluate_random_function(f, x, y):
     """ Evaluates the function created in build_random_function.
-    """
+        Input: 
+        Output: the value of the function, given an x and y
+    # """
+    if  functions[0] == "x": #if the product of 
+      return x
+    elif functions[0] == "y":
+      return y 
+    elif functions[0] == "prod":
+        return evaluate_random_function(f[1],x,y) * evaluate_random_function(f[2],x,y)
+    elif functions[0] == "cos_pi":
+        return cos(pi * evaluate_random_function(f[1],x,y))
+    elif functions[0] == "sin_pi":
+        return sin(pi * evaluate_random_function(f[1],x,y))
+
 def remap_interval(val, input_interval_start, input_interval_end, output_interval_start, output_interval_end):
     """ Maps the input value that is in the interval [input_interval_start, input_interval_end]
         to the output interval [output_interval_start, output_interval_end].  The mapping
@@ -75,13 +89,12 @@ def remap_interval(val, input_interval_start, input_interval_end, output_interva
     """
     # your code goes here
 
-  #how should I make build_random_function go through three times, once for each color?
-  #creates blank image with a given length and width of pixels
-  from PIL import Image
-  length = 350 
-  width = 350
-  image = Image.new("RGB",(length,width))
     
-
+    #creates blank image with a given length and width of pixels
+    from PIL import Image
+    length = 350 
+    width = 350
+    image = Image.new("RGB",(length,width))
+    
 
 #your additional code and functions go here
