@@ -21,9 +21,8 @@ def build_random_function(min_depth, max_depth):
         no_input = [["x"], ["y"]] 
         # describes function inputs a and b
         # randint(0,2) gives you an interger from 0 to 2
-        a = no_input[randint(0,2)] 
-        b = no_input[randint(0,2)]
-        print 
+        a = no_input[randint(0,1)] 
+        b = no_input[randint(0,1)]
 
     # Determines the case in which to create a random function 
     else:
@@ -38,12 +37,13 @@ def build_random_function(min_depth, max_depth):
               ["sin_pi", a],
               ["x"],
               ["y"]]
+    print 'functions'
 
     #choose which function to go with 
     if min_depth > 1:
-        i = randint(0,2)
-    else:
         i = randint(0,4)
+    else:
+        i = randint(0,6)
 
 # def build_random_lambda(min_depth, max_depth):
 #   """ Same concept as build_random_function. 
@@ -64,11 +64,12 @@ def build_random_function(min_depth, max_depth):
 #       i = randint() TODO
 
 
-def evaluate_random_function(f, x, y):
+def evaluate_random_function(functions, x, y):
     """ Evaluates the function created in build_random_function.
         Input: 
         Output: the value of the function, given an x and y
     # """
+    print 'evaluate'
     if  functions[0] == "x": #if the product of 
       return x
     elif functions[0] == "y":
@@ -79,7 +80,7 @@ def evaluate_random_function(f, x, y):
         return cos(pi * evaluate_random_function(f[1],x,y))
     elif functions[0] == "sin_pi":
         return sin(pi * evaluate_random_function(f[1],x,y))
-
+ 
 # def remap_interval(val, input_interval_start, input_interval_end, output_interval_start, output_interval_end):
 #     """ Maps the input value that is in the interval [input_interval_start, input_interval_end]
 #         to the output interval [output_interval_start, output_interval_end].  The mapping
@@ -90,6 +91,7 @@ def evaluate_random_function(f, x, y):
 
 def draw_function():
     """ Not using remap_interval because I do not need that complexity. 
+        draw_function takes no inputs and draws the functions from build_random_function
     """
     # creates RBG palate 
     red = build_random_function(1,3)
@@ -126,3 +128,5 @@ def draw_function():
     #plotting time! image saved and shown
     im.save(new_image.png)
     im.show()
+
+build_random_function(0,3)
