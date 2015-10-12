@@ -80,21 +80,49 @@ def evaluate_random_function(f, x, y):
     elif functions[0] == "sin_pi":
         return sin(pi * evaluate_random_function(f[1],x,y))
 
-def remap_interval(val, input_interval_start, input_interval_end, output_interval_start, output_interval_end):
-    """ Maps the input value that is in the interval [input_interval_start, input_interval_end]
-        to the output interval [output_interval_start, output_interval_end].  The mapping
-        is an affine one (i.e. output = input*c + b).
+# def remap_interval(val, input_interval_start, input_interval_end, output_interval_start, output_interval_end):
+#     """ Maps the input value that is in the interval [input_interval_start, input_interval_end]
+#         to the output interval [output_interval_start, output_interval_end].  The mapping
+#         is an affine one (i.e. output = input*c + b).
     
-        TODO: please fill out the rest of this docstring
+#         TODO: please fill out the rest of this docstring
+#     """
+
+def draw_function():
+    """ Not using remap_interval because I do not need that complexity. 
     """
-    # your code goes here
+    # creates RBG palate 
+    red = build_random_function(1,3)
+    green = build_random_function(2,4)
+    blue = build_random_function(3,5)
 
-    
-    #creates blank image with a given length and width of pixels
+    #setting up image
     from PIL import Image
-    length = 350 
-    width = 350
-    image = Image.new("RGB",(length,width))
-    
+    length = 350
+    width = 350 
+    im = Image.new("RGB",(length,width))
+    pixels = im.load()
 
-#your additional code and functions go here
+    #go through and color ALL THE PIXELS (0- 349)
+    for x in range(0,349):
+        for y in range(0,349):
+            # define the scale here 
+            xscale = (x / (349 / 2.0)) -1
+            yscale = (y / (349 / 2.0)) -1
+            #go back and call evaluate_random_function with color and scales
+            red_scaled_down = evaluate_random_function(red, xscale, yscale)
+            green_scaled_down = evaluate_random_function(green, xscale, yscale)
+            blue_scaled_down = evaluate_random_function(blue_scaled, xscale, yscale)
+            #scale back up again (reverse from xscale and yscale)
+            red_rescaled = ((red_scaled_down +1) * 349) / 2.0
+            green_rescaled = ((green_scaled_down +1) * 349) / 2.0
+            blue_rescaled = ((blue_scaled_down +1) * 349) / 2.0
+            #changing to interger from float so it can be plotted
+            r = int(red_rescaled)
+            g = int(green_rescaled)
+            b = int(blue_rescaled)
+            #creating the pixels
+            pixels[x,y] = (r,g,b)
+    #plotting time! image saved and shown
+    im.save(new_image.png)
+    im.show()
