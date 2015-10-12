@@ -38,31 +38,13 @@ def build_random_function(min_depth, max_depth):
               ["x"],
               ["y"]]
     print 'functions'
-
+    return functions
+    
     #choose which function to go with 
     if min_depth > 1:
-        i = randint(0,4)
+        i = randint(0,2)
     else:
         i = randint(0,6)
-
-# def build_random_lambda(min_depth, max_depth):
-#   """ Same concept as build_random_function. 
-#       No need for evaluate_random_function as the lambda does that already. 
-#   """
-#     prod = lambda a,b: a*b
-#     cos_pi = lambda a: cos(a)
-#     sin_pi = lambda a: sin(a)
-
-#     functions = [[prod],
-#                 [cos_pi],
-#                 [sin_pi],
-#                 [x],
-#                 [y]]
-
-#     # choose function to return, then return it
-#     if max_depth == 1:
-#       i = randint() TODO
-
 
 def evaluate_random_function(functions, x, y):
     """ Evaluates the function created in build_random_function.
@@ -70,7 +52,8 @@ def evaluate_random_function(functions, x, y):
         Output: the value of the function, given an x and y
     # """
     print 'evaluate'
-    if  functions[0] == "x": #if the product of 
+    if  functions[0] == "x": 
+      print x
       return x
     elif functions[0] == "y":
       return y 
@@ -129,4 +112,5 @@ def draw_function():
     im.save(new_image.png)
     im.show()
 
-build_random_function(0,3)
+if __name__ == '__main__':
+    build_random_function(0,3)
