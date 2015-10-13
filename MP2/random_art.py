@@ -19,7 +19,7 @@ def build_random_function(min_depth, max_depth):
     if max_depth == 1:
         # list of input strings
         no_input = [["x"], ["y"]] 
-        
+
         # describes function inputs a and b
         # randint(0,2) gives you an interger from 0 to 2
         a = no_input[randint(0,1)] 
@@ -113,6 +113,4 @@ def draw_function(image_name):
     im.show()
 
 if __name__ == '__main__':
-    # build_random_function(0,3)
-    # evaluate_random_function(f,a,b)
-    draw_function("figure12.png")
+    draw_function("figure1.png")
