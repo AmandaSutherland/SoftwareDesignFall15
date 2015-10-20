@@ -19,7 +19,9 @@ class SwimFishView:
         
     def draw(self):
         ocean_blue = (100,149,237)
-        self.screen.fill(ocean_blue)
+        # self.screen.fill(ocean_blue)
+        img=pygame.image.load('images/ocean.jpg') 
+        self.screen.blit(img,(0,0))
         # Draws the fish
         points = []
         points.append((self.model.fish.x,self.model.fish.y))
