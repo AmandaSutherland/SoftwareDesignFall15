@@ -23,6 +23,9 @@ class SwimFishModel:
         self.leftWall = Wall((205,133,63),480,50,0,0)
         self.rightWall = Wall((205,133,63),480,50,640-64,0)
 
+        for monster in self.monsters:
+            if self.fish.rect.colliderect(monster.rect):
+                raise SystemExit, "You lose!"
 
 class Monster:
     """ Encodes the state of a monster in the game """
@@ -33,6 +36,7 @@ class Monster:
         self.width = width
         self.x = x
         self.y = y
+        self.rect = pygame.Rect(x,y,width,height)
 
 class Fish:
     """ Encodes the state of the fish in the game """
@@ -42,6 +46,8 @@ class Fish:
         self.width = width
         self.x = x
         self.y = y
+        self.rect = pygame.Rect(x,y,width,height)
+        
 
 class Wall:
    """ Encodes the state of the wall in the game """
