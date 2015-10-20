@@ -18,7 +18,7 @@ class SwimFishView:
         self.screen = screen
         
     def draw(self):
-        ocean_blue = (100,149,237)
+        # ocean_blue = (100,149,237)
         # self.screen.fill(ocean_blue)
         img=pygame.image.load('images/ocean.jpg') 
         self.screen.blit(img,(0,0))
