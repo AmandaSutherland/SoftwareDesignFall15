@@ -17,7 +17,10 @@ class SwimFishModel:
     def __init__(self):
         self.monsters = []
         for x in range(100,620,310):
-            monster = Monster(15,10,'images/octopus1_png.png',10,x,120)
+            monster = Monster(10,10,'images/octopus1_png.png',10,x,120)
+            self.monsters.append(monster)
+        for x in range(200,400,310):
+            monster = Monster(10,10,'images/crab1.png',10,x,60)
             self.monsters.append(monster)
         self.fish = Fish((209,95,238),60,50,200,450)
         self.leftWall = Wall((205,133,63),480,50,0,0)
