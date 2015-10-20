@@ -27,6 +27,7 @@ class SwimFishModel:
 class Monster:
     """ Encodes the state of a monster in the game """
     def __init__(self,color,height,width,x,y):
+        img=pygame.image.load('images/octopus1_png.png') 
         self.color = color
         self.height = height
         self.width = width
