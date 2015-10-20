@@ -20,8 +20,8 @@ class SwimFishView:
     def draw(self):
         # ocean_blue = (100,149,237)
         # self.screen.fill(ocean_blue)
-        img=pygame.image.load('images/ocean.jpg') 
-        self.screen.blit(img,(0,0))
+        ocean_floor=pygame.image.load('images/ocean.jpg') 
+        self.screen.blit(ocean_floor,(0,0))
         # Draws the fish
         points = []
         points.append((self.model.fish.x,self.model.fish.y))
@@ -34,7 +34,10 @@ class SwimFishView:
         pygame.draw.circle(self.screen, (0,20,20),(int(self.model.fish.x+self.model.fish.width*0.25),int(self.model.fish.y-self.model.fish.width*0.25)),4,0) # Draws the eye
 
         for monster in self.model.monsters:
-            pygame.draw.rect(self.screen, pygame.Color(monster.color[0],monster.color[1],monster.color[2]),pygame.Rect(monster.x,monster.y,monster.width,monster.height))
+            # print"why"
+            self.screen.blit(monster.img,((int(monster.x)),int(monster.y)))
+            # self.screen.blit(self.model.monster.img,((int(self.model.monster.x)),int(self.model.monster.y)))
+            # pygame.draw.rect(self.screen, pygame.Color(monster.color[0],monster.color[1],monster.color[2]),pygame.Rect(monster.x,monster.y,monster.width,monster.height))
 
         # Draws the ocean beds
         img1=pygame.image.load('images/beach.jpg') 

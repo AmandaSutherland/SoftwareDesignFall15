@@ -17,7 +17,7 @@ class SwimFishModel:
     def __init__(self):
         self.monsters = []
         for x in range(100,620,310):
-            monster = Monster((205,79,57),35,100,x,120)
+            monster = Monster((205,79,57),15,10,x,120)
             self.monsters.append(monster)
         self.fish = Fish((209,95,238),60,50,200,450)
         self.leftWall = Wall((205,133,63),480,50,0,0)
@@ -26,8 +26,9 @@ class SwimFishModel:
 
 class Monster:
     """ Encodes the state of a monster in the game """
-    def __init__(self,color,height,width,x,y):
-        self.color = color
+    def __init__(self,img,height,width,x,y):
+        self.img = pygame.image.load('images/octopus1_png.png')
+        # self.scale = scale('images/octopus1_png.png', (0.2, 0.2), DestSurface = None) 
         self.height = height
         self.width = width
         self.x = x
