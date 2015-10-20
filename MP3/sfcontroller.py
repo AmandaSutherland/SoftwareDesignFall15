@@ -18,7 +18,7 @@ class SwimFishMouseController:
     def handle_mouse_event(self,event):
         if event.type == MOUSEMOTION:
             self.model.fish.x = event.pos[0] - self.model.fish.width/2.0
-            self.model.fish.y = event.pos[0] - self.model.fish.height/2.0
+            self.model.fish.y = event.pos[0] + self.model.fish.height/2.0
 
 
 class SwimFishKeyboardController:

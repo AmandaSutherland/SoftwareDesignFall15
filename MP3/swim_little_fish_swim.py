@@ -23,7 +23,6 @@ import time
 
 if __name__ == '__main__':
     pygame.init()
-
     size = (640,480)
     screen = pygame.display.set_mode(size)
 
