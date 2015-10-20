@@ -16,10 +16,13 @@ class SwimFishModel:
     """ Encodes the game state """
     def __init__(self):
         self.monsters = []
-        for x in range(20,620,150):
-            monster = Monster((0,255,0),20,100,x,120)
+        for x in range(100,620,310):
+            monster = Monster((205,79,57),35,100,x,120)
             self.monsters.append(monster)
-        self.fish = Fish((255,255,255),20,100,200,450)
+        self.fish = Fish((209,95,238),60,50,200,450)
+        self.leftWall = Wall((205,133,63),480,50,0,0)
+        self.rightWall = Wall((205,133,63),480,50,590,0)
+
 
 class Monster:
     """ Encodes the state of a monster in the game """
@@ -39,8 +42,8 @@ class Fish:
         self.x = x
         self.y = y
 
-class Walls:
-   """ Encodes the state of the walls in the game """
+class Wall:
+   """ Encodes the state of the wall in the game """
    def __init__(self,color,height,width,x,y):
        self.color = color
        self.height = height
