@@ -35,7 +35,7 @@ class SwimFishView:
 
         for monster in self.model.monsters:
             # print"why"
-            self.screen.blit(monster.img,((int(monster.x)),int(monster.y)))
+            self.screen.blit(monster.scale,((int(monster.x)),int(monster.y)))
             # self.screen.blit(self.model.monster.img,((int(self.model.monster.x)),int(self.model.monster.y)))
             # pygame.draw.rect(self.screen, pygame.Color(monster.color[0],monster.color[1],monster.color[2]),pygame.Rect(monster.x,monster.y,monster.width,monster.height))
 
