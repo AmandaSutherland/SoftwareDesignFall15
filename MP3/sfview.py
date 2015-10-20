@@ -30,13 +30,16 @@ class SwimFishView:
         pygame.draw.polygon(self.screen, pygame.Color(self.model.fish.color[0],self.model.fish.color[1],self.model.fish.color[2]),points,0)
         pygame.draw.ellipse(self.screen, pygame.Color(self.model.fish.color[0],self.model.fish.color[1],self.model.fish.color[2]),pygame.Rect(self.model.fish.x-self.model.fish.width/2,self.model.fish.y-self.model.fish.height/2,self.model.fish.width,self.model.fish.height),0)
         # pygame.draw.circle(self.screen, pygame.Color(self.model.fish.color[0],self.model.fish.color[1],self.model.fish.color[2]), (int(self.model.fish.x),int(self.model.fish.y)),int(self.model.fish.width)/4,0)
-        pygame.draw.circle(self.screen, ocean_blue,(int(self.model.fish.x),int(self.model.fish.y-self.model.fish.width*0.6)),7,0) # Draws the mouth
+        # pygame.draw.circle(self.screen, ocean_blue,(int(self.model.fish.x),int(self.model.fish.y-self.model.fish.width*0.6)),7,0) # Draws the mouth
         pygame.draw.circle(self.screen, (0,20,20),(int(self.model.fish.x+self.model.fish.width*0.25),int(self.model.fish.y-self.model.fish.width*0.25)),4,0) # Draws the eye
 
         for monster in self.model.monsters:
             pygame.draw.rect(self.screen, pygame.Color(monster.color[0],monster.color[1],monster.color[2]),pygame.Rect(monster.x,monster.y,monster.width,monster.height))
 
         # Draws the ocean beds
-        pygame.draw.rect(self.screen, pygame.Color(self.model.leftWall.color[0],self.model.leftWall.color[1],self.model.leftWall.color[2]),pygame.Rect(self.model.leftWall.x,self.model.leftWall.y,self.model.leftWall.width,self.model.leftWall.height),0)
-        pygame.draw.rect(self.screen, pygame.Color(self.model.rightWall.color[0],self.model.rightWall.color[1],self.model.rightWall.color[2]),pygame.Rect(self.model.rightWall.x,self.model.rightWall.y,self.model.rightWall.width,self.model.rightWall.height),0) 
+        img1=pygame.image.load('images/beach.jpg') 
+        self.screen.blit(img1,(self.model.leftWall.x,self.model.leftWall.y))
+        self.screen.blit(img1,(self.model.rightWall.x,self.model.rightWall.y))
+        # pygame.draw.rect(self.screen, pygame.Color(self.model.leftWall.color[0],self.model.leftWall.color[1],self.model.leftWall.color[2]),pygame.Rect(self.model.leftWall.x,self.model.leftWall.y,self.model.leftWall.width,self.model.leftWall.height),0)
+        # pygame.draw.rect(self.screen, pygame.Color(self.model.rightWall.color[0],self.model.rightWall.color[1],self.model.rightWall.color[2]),pygame.Rect(self.model.rightWall.x,self.model.rightWall.y,self.model.rightWall.width,self.model.rightWall.height),0) 
         pygame.display.update()

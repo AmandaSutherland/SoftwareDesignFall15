@@ -21,7 +21,7 @@ class SwimFishModel:
             self.monsters.append(monster)
         self.fish = Fish((209,95,238),60,50,200,450)
         self.leftWall = Wall((205,133,63),480,50,0,0)
-        self.rightWall = Wall((205,133,63),480,50,590,0)
+        self.rightWall = Wall((205,133,63),480,50,640-64,0)
 
 
 class Monster:
