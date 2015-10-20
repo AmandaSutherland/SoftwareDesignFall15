@@ -20,6 +20,11 @@ class SwimFishMouseController:
             self.model.fish.x = event.pos[0] #- self.model.fish.width/2.0
             self.model.fish.y = event.pos[1] #- self.model.fish.height/2.0
 
+    def handle_collision(self):
+        for monster in self.model.monsters:
+            if self.model.fish.rect.colliderect(monster.rect):
+                raise SystemExit, "You lose!"
+
 
 class SwimFishKeyboardController:
     def __init__(self,model):

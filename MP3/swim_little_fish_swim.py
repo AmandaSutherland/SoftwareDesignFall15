@@ -39,6 +39,7 @@ if __name__ == '__main__':
                 running = False
             if event.type == MOUSEMOTION:
                 controller.handle_mouse_event(event)
+                controller.handle_collision()
             # if event.type == KEYDOWN:
             #     controller.handle_key_event(event)
         view.draw()
