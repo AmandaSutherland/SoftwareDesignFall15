@@ -9,6 +9,8 @@ from random import randint
 import Image
 import math
 from math import sin, cos, pi
+# ^^ do both the imports the same way -- from math import sin, cos, pi, pow
+# OR import math, then use math.sin, math.cos, and math.pi (like you're already using math.pow)
 
 def build_random_function(min_depth, max_depth):
     """ Recursion!
@@ -18,14 +20,14 @@ def build_random_function(min_depth, max_depth):
     # Determines the case where a random function should not be built
     if max_depth == 1:
         # list of input strings
-        no_input = [["x"], ["y"]] 
+        no_input = [["x"], ["y"]]
 
         # describes function inputs a and b
-        # randint(0,2) gives you an interger from 0 to 2
-        a = no_input[randint(0,1)] 
+        # randint(0,2) gives you an interger from 0 to 2 <- randint(0,1)?
+        a = no_input[randint(0,1)]
         b = no_input[randint(0,1)]
 
-    # Determines the case in which to create a random function 
+    # Determines the case in which to create a random function
     else:
         #desribes function inputs a and b
         a = build_random_function(min_depth-1, max_depth-1)
@@ -39,8 +41,8 @@ def build_random_function(min_depth, max_depth):
                 ["sin_pi", a],
                 ["square", a],
                 ["cube", a]]
-       
-    #choose which function to go with 
+
+    #choose which function to go with
     if min_depth > 1:
         i = randint(1,3)
     else:
@@ -49,13 +51,13 @@ def build_random_function(min_depth, max_depth):
 
 def evaluate_random_function(functions, x, y):
     """ Evaluates the function created in build_random_function.
-        Input: 
+        Input:
         Output: the value of the function, given an x and y
     # """
-    if  functions[0] == "x": 
+    if  functions[0] == "x":
         return x
     elif functions[0] == "y":
-        return y 
+        return y
     elif functions[0] == "prod":
         return evaluate_random_function(functions[1],x,y) * evaluate_random_function(functions[2],x,y)
     elif functions[0] == "cos_pi":
@@ -63,16 +65,16 @@ def evaluate_random_function(functions, x, y):
     elif functions[0] == "sin_pi":
         return sin(pi * evaluate_random_function(functions[1],x,y))
     elif functions[0] == "square":
-        return math.pow(evaluate_random_function(functions[1],x,y) , 2)
+        return math.pow(evaluate_random_function(functions[1],x,y),2)
     elif functions[0] == "cube":
-        return math.pow(evaluate_random_function(functions[1],x,y) ,3)
+        return math.pow(evaluate_random_function(functions[1],x,y),3)
 
 
 def draw_function(image_name):
-    """ Not using remap_interval because I do not need that complexity. 
+    """ Not using remap_interval because I do not need that complexity.
         draw_function takes no inputs and draws the functions from build_random_function
     """
-    # creates RBG palate 
+    # creates RBG palate
     red = build_random_function(1,3)
     green = build_random_function(2,8)
     blue = build_random_function(3,5)
@@ -80,27 +82,31 @@ def draw_function(image_name):
     #setting up image
     from PIL import Image
     length = 350
-    width = 350 
+    width = 350
     im = Image.new("RGB",(length,width))
     pixels = im.load()
 
     #go through and color ALL THE PIXELS (0- 349)
+    # vv how could you parameterize this so you only have to change
+    # length and width, and everything else just works?
     for x in range(0,349):
         for y in range(0,349):
+            # so this is doing what remap_interval would?
             # define the scale here (-1 to 1)
-            xscale_down = (2*x / 349.0) -1 
-            yscale_down = (2*y / 349.0) -1 
+            xscale_down = (2*x / 349.0) -1
+            yscale_down = (2*y / 349.0) -1
 
             #go back and call evaluate_random_function with color and scales
             red_scaled_down = evaluate_random_function(red, xscale_down, yscale_down)
             green_scaled_down = evaluate_random_function(green, xscale_down, yscale_down)
             blue_scaled_down = evaluate_random_function(blue, xscale_down, yscale_down)
-            
+
+            # and this is doing what remap_interval would too?
             #scale back up again (reverse from xscale and yscale)
             red_rescaled = ((red_scaled_down +1) * 349) / 2.0
             green_rescaled = ((green_scaled_down +1) * 349) / 2.0
             blue_rescaled = ((blue_scaled_down +1) * 349) / 2.0
-            
+
             #changing to interger from float so it can be plotted
             r = int(red_rescaled)
             g = int(green_rescaled)
