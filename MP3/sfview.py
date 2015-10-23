@@ -46,3 +46,43 @@ class SwimFishView:
         # pygame.draw.rect(self.screen, pygame.Color(self.model.leftWall.color[0],self.model.leftWall.color[1],self.model.leftWall.color[2]),pygame.Rect(self.model.leftWall.x,self.model.leftWall.y,self.model.leftWall.width,self.model.leftWall.height),0)
         # pygame.draw.rect(self.screen, pygame.Color(self.model.rightWall.color[0],self.model.rightWall.color[1],self.model.rightWall.color[2]),pygame.Rect(self.model.rightWall.x,self.model.rightWall.y,self.model.rightWall.width,self.model.rightWall.height),0) 
         pygame.display.update()
+
+
+    def init_screen(self):
+        pygame.draw.rect(self.screen, (154,255,154),(0,0,640,480),0)
+        # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
+        myfont = pygame.font.SysFont("monospace", 25)
+
+        # render text
+        welcome = myfont.render("WELCOME TO SWIM LITTLE FISH SWIM!", 1, (47,79,79))
+        rules = myfont.render("Avoid the MONSTERS and STAY ALIVE", 1, (47,79,79))
+        game = myfont.render("Your fist game starts in 5 seconds", 1, (47,79,79))
+        self.screen.blit(welcome, (70, 150))
+        self.screen.blit(rules, (68, 200))
+        self.screen.blit(game, (65, 250))
+        pygame.display.update()
+
+    def lose(self):
+        pygame.draw.rect(self.screen, (255,127,80),(0,0,640,480),0)
+        # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
+        myfont = pygame.font.SysFont("monospace", 25)
+
+        # render text
+        label = myfont.render("YOU GOT EATEN BY A MONSTER!", 1, (47,79,79))
+        next_game = myfont.render("Your next game starts in 3 seconds", 1, (47,79,79))
+        self.screen.blit(label, (110, 180))
+        self.screen.blit(next_game, (50, 240))
+        pygame.display.update()
+
+
+    def level_up(self):
+        pygame.draw.rect(self.screen, (175,238,238),(0,0,640,480),0)
+         # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
+        myfont = pygame.font.SysFont("monospace", 30)
+
+        # render text
+        label = myfont.render("YOU SURVIVED THE DANGEROUS SEA!", 1, (47,79,79))
+        next_game = myfont.render("Next Level starts in 5 seconds", 1, (47,79,79))
+        self.screen.blit(label, (50, 180))
+        self.screen.blit(next_game, (50, 240))
+        pygame.display.update()
