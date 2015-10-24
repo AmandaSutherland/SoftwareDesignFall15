@@ -12,18 +12,27 @@ import pygame
 from pygame.locals import *
 
 class SwimFishMouseController:
-    def __init__(self,model):
+    def __init__(self,model,view):
         self.model = model
+        self.view = view
     
     def handle_mouse_event(self,event):
         if event.type == MOUSEMOTION:
             self.model.fish.x = event.pos[0] #- self.model.fish.width/2.0
             self.model.fish.y = event.pos[1] #- self.model.fish.height/2.0
+            self.model.fish.rect.x = event.pos[0] #- self.model.fish.width/2.0
+            self.model.fish.rect.y = event.pos[1] #- self.model.fish.height/2.0
 
     def handle_collision(self):
         for monster in self.model.monsters:
             if self.model.fish.rect.colliderect(monster.rect):
-                raise SystemExit, "You lose!"
+                # raise SystemExit, "You Lose!"
+                # self.view.lose()
+                return True
+
+    # def stop_fish(self):
+    #     self.model.fish.x = self.model.fish.x 
+    #     self.model.fish.y = self.model.fish.y
 
 
 class SwimFishKeyboardController:
