@@ -77,7 +77,6 @@ class Monster:
 		monster_pose_left = left_byte_updated*size_pixel
 
 	
-# 
 class Fish:
 	""" Encodes the state of the fish in the game """
 	def __init__(self,color,height,width,x,y):
