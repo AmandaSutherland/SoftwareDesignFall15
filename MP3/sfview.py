@@ -62,7 +62,7 @@ class SwimFishView:
         self.screen.blit(game, (65, 250))
         pygame.display.update()
 
-    def lose(self):
+    def eaten(self):
         pygame.draw.rect(self.screen, (255,127,80),(0,0,640,480),0)
         # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
         myfont = pygame.font.SysFont("monospace", 25)
@@ -85,4 +85,16 @@ class SwimFishView:
         next_game = myfont.render("Next Level starts in 5 seconds", 1, (47,79,79))
         self.screen.blit(label, (50, 180))
         self.screen.blit(next_game, (50, 240))
+        pygame.display.update()
+
+    def lost(self):
+        pygame.draw.rect(self.screen, (255,215,0),(0,0,640,480),0)
+         # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
+        myfont = pygame.font.SysFont("monospace", 30)
+
+        # render text
+        label = myfont.render("YOU GOT EATEN 5 TIMES!", 1, (47,79,79))
+        next_game = myfont.render("GAME OVER, BYE", 1, (47,79,79))
+        self.screen.blit(label, (110, 180))
+        self.screen.blit(next_game, (170, 240))
         pygame.display.update()
