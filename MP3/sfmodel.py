@@ -61,36 +61,55 @@ class Monster:
     #     self.monster = Monster(100,100,'images/octopus1_png.png',x,120)
 
 
-    def move_monsters(self): 
+    def move_monster(self): 
         #play with bitwise operators
 
         #size of the screen. should be better defined, since it's currently in two places
         size = [640,480] 
         
+        # ##setting up to make them move
+        # #choose a random interger within the bounds of those lists
+        # choose_byte = random.randint(0,7)
+        # #choosing a starting position for monsters
+        # monster_start_pose = 2**choose_byte
+        # ##moving left or right
+        # #choose to move right or left
+        # new_pose = random.randint(-1,1)
+        # #move the byte 1 right or left 
+        # byte_updated = choose_byte + new_pose
+        # #get width of pixels
+        # width_pixel = size[0]/16
+        # #monster position on screen (horizontal)
+        # monster_pose = byte_updated*width_pixel
+        # # put into the screen 
+        # self.x = monster_pose 
+        # ##moving monster down
+        # #height of pixels
+        # height_pixel = size[1]/20 
+        # #move monsters down
+        # self.y = height_pixel + 1
+
         ##setting up to make them move
-        #choose a random interger within the bounds of those lists
-        choose_byte = random.randint(0,7)
-        #choosing a starting position for monsters
-        monster_start_pose = 2**choose_byte
+        choose_byte = self.x
         ##moving left or right
         #choose to move right or left
-        new_pose = random.randint(-1,1)
+        new_pose = randint(-1,1)
         #move the byte 1 right or left 
-        byte_updated = choose_byte + new_pose
+        byte_updated = choose_byte + (new_pose*20)
         #get width of pixels
-        width_pixel = size[0]/16
+        # width_pixel = size[0]/16
         #monster position on screen (horizontal)
-        monster_pose = byte_updated*width_pixel
+        monster_pose = byte_updated
         # put into the screen 
-        self.x = monster_pose_right  
+        self.x = monster_pose 
+        # print self.x
         ##moving monster down
         #height of pixels
-        height_pixel = size[1]/20 
+        # height_pixel = size[1]/20 
         #move monsters down
-        self.y = height_pixel + 1 
-        # #monster position on screen (vertical) 
-        # monster_pose_right_vert = right_byte_updated*height_pixel
-        # monster_pose_left_vert = left_byte_updated*height_pixel
+        self.y = self.y + 10
+        print self.y
+
         
 
 class Fish:

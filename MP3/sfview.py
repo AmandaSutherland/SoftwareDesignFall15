@@ -79,6 +79,7 @@ class SwimFishView:
         pygame.draw.rect(self.screen, (175,238,238),(0,0,640,480),0)
          # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
         myfont = pygame.font.SysFont("monospace", 30)
+        self.model.monsters = []
 
         # render text
         label = myfont.render("YOU SURVIVED THE DANGEROUS SEA!", 1, (47,79,79))
