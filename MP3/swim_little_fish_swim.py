@@ -40,6 +40,7 @@ if __name__ == '__main__':
     eaten = False
     playAgain = False
     init = time.time()
+    last_monster_spawn = init
     counter = 0
     view.init_screen()
     time.sleep(5)
@@ -57,10 +58,12 @@ if __name__ == '__main__':
                     # controller.handle_collision()
                 # if event.type == KEYDOWN:
                 #     controller.handle_key_event(event)
-            for x in range(100,620,310):
-                choice = choices[random.randint(0, 1)]
-                monster = Monster(100, 100, choice, x, 120)
-                model.monsters.append(monster)
+            if now - last_monster_spawn >= 3:
+                last_monster_spawn = last_monster_spawn + 3 
+                for x in range(100,620,310):
+                    choice = choices[random.randint(0, 1)]
+                    monster = Monster(100, 100, choice, x, 120)
+                    model.monsters.append(monster)
             view.draw()
             
             if (controller.handle_collision()):
