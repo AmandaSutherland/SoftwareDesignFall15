@@ -13,7 +13,6 @@ from pygame.locals import *
 from random import randint
 import time 
 
-
 class SwimFishModel:
 
     """ Encodes the game state """
@@ -42,17 +41,17 @@ class Monster:
     # def scaling(self,height,width,factor):
         # img_scaled = pygame.transform.scale(self.surface_oct1, (int(factor*width), int(factor*height)))
 
-    def __init__(self,height,width,img,x,y):
-        self.height = height
-        self.width = width
-        self.img = pygame.image.load(img)
-        # self.scale = self.scaling(height,width,factor)
-        self.scale = pygame.transform.scale(self.img, (int(width), int(height)))
-        # self.scale = pygame.transform.scale(surface_oct1, (width, height)) 
-        self.x = x
-        self.y = y
-        #Adjust the positions of rectangles surrounding the monsters to give a smoother game play experience
-        self.rect = pygame.Rect(x+35,y+20,width-15,height)
+	def __init__(self,height,width,img,x,y):
+		self.height = height
+		self.width = width
+		self.img = pygame.image.load(img)
+		# self.scale = self.scaling(height,width,factor)
+		self.scale = pygame.transform.scale(self.img, (int(width), int(height)))
+		# self.scale = pygame.transform.scale(surface_oct1, (width, height)) 
+		self.x = x
+		self.y = y
+		#Adjust the positions of rectangles surrounding the monsters to give a smoother game play experience
+		self.rect = pygame.Rect(x+35,y+20,width-15,height)
 
     # def initiate_monster(self):
     #     now = time.time()
@@ -92,14 +91,14 @@ class Monster:
         
 
 class Fish:
-    """ Encodes the state of the fish in the game """
-    def __init__(self,color,height,width,x,y):
-        self.color = color
-        self.height = height
-        self.width = width
-        self.x = x
-        self.y = y
-        self.rect = pygame.Rect(x+20,y+20,width,height)
+	""" Encodes the state of the fish in the game """
+	def __init__(self,color,height,width,x,y):
+		self.color = color
+		self.height = height
+		self.width = width
+		self.x = x
+		self.y = y
+		self.rect = pygame.Rect(x+20,y+20,width,height)
 
 class Wall:
    """ Encodes the state of the wall in the game """
