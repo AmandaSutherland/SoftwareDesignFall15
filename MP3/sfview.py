@@ -11,16 +11,17 @@ import pygame
 from pygame.locals import *
 import math
 
+
 class SwimFishView:
     """ A view of swim little fish swim rendered in a Pygame window """
-    def __init__(self,model,screen):
+    def __init__(self, model, screen):
         self.model = model
         self.screen = screen
-        
+
     def draw(self):
         # ocean_blue = (100,149,237)
         # self.screen.fill(ocean_blue)
-        ocean_floor=pygame.image.load('images/ocean.jpg') 
+        ocean_floor = pygame.image.load('images/ocean.jpg') 
         self.screen.blit(ocean_floor,(0,0))
         # Draws the fish
         points = []
@@ -34,7 +35,6 @@ class SwimFishView:
         pygame.draw.circle(self.screen, (0,20,20),(int(self.model.fish.x+self.model.fish.width*0.25),int(self.model.fish.y-self.model.fish.width*0.25)),4,0) # Draws the eye
 
         for monster in self.model.monsters:
-            # print"why"
             self.screen.blit(monster.scale,((int(monster.x)),int(monster.y)))
             # self.screen.blit(self.model.monster.img,((int(self.model.monster.x)),int(self.model.monster.y)))
             # pygame.draw.rect(self.screen, pygame.Color(monster.color[0],monster.color[1],monster.color[2]),pygame.Rect(monster.x,monster.y,monster.width,monster.height))

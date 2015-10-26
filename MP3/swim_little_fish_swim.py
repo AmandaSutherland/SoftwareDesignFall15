@@ -29,9 +29,11 @@ if __name__ == '__main__':
     sound.set_volume(0.4)
 
     model = SwimFishModel()
-    view = SwimFishView(model,screen)
-    controller = SwimFishMouseController(model,view)
+    view = SwimFishView(model, screen)
+    controller = SwimFishMouseController(model, view)
     # controller = SwimFishKeyboardController(model)
+
+    choices = ['images/octopus1_png.png','images/crab1.png']
 
     running = True
     playing = True
@@ -55,7 +57,12 @@ if __name__ == '__main__':
                     # controller.handle_collision()
                 # if event.type == KEYDOWN:
                 #     controller.handle_key_event(event)
+            for x in range(100,620,310):
+                choice = choices[random.randint(0, 1)]
+                monster = Monster(100, 100, choice, x, 120)
+                model.monsters.append(monster)
             view.draw()
+            
             if (controller.handle_collision()):
                 eaten = True
                 init = time.time()
