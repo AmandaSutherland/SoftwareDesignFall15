@@ -33,8 +33,8 @@ if __name__ == '__main__':
     controller = SwimFishMouseController(model, view)
     # controller = SwimFishKeyboardController(model)
 
-    choices = ['images/octopus1_png.png', 'images/crab1.png']#, 'images/jellyfish.png', 'images/shark.png', 'images/stingray.png']
-
+    choices = ['images/octopus1_png.png', 'images/crab1.png', 'images/jellyfish.png', 'images/shark.png', 'images/stingray.png']
+    # move this
     running = True
     playing = True
     eaten = False
@@ -65,7 +65,7 @@ if __name__ == '__main__':
             if now - last_monster_spawn >= 5:
                 last_monster_spawn = now
                 for x in range(100,620,310):
-                    choice = choices[random.randint(0, 1)]
+                    choice = choices[random.randint(0, 4)]
                     monster = Monster(100, 100, choice, x, 0)
                     model.monsters.append(monster)
             #control the monsters' movement
@@ -80,7 +80,7 @@ if __name__ == '__main__':
                 init = time.time()
             if (now-init >= 10):
                 view.level_up()
-                time.sleep(5)
+                time.sleep(3)
                 counter = 0
                 init = time.time()
             time.sleep(0.01)
@@ -94,6 +94,6 @@ if __name__ == '__main__':
                 counter += 1;
             else:
                 view.lost()
-                time.sleep(5)
+                time.sleep(3)
                 sound.stop()
                 pygame.quit()

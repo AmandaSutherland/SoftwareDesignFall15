@@ -54,7 +54,7 @@ class Monster:
         self.x = x
         self.y = y
         #Adjust the positions of rectangles surrounding the monsters to give a smoother game play experience
-        self.rect = pygame.Rect(x+60,y+10,width-30,height-30)
+        self.rect = pygame.Rect(x+60,y+10,width-15,height-15)
         #self.rect = pygame.Rect(x,y,width,height)
 
     # def initiate_monster(self):
@@ -123,7 +123,7 @@ class Fish:
         self.width = width
         self.x = x
         self.y = y
-        self.rect = pygame.Rect(x+20,y+20,width,height)
+        self.rect = pygame.Rect(x,y,width,height+15)
 
 class Wall:
    """ Encodes the state of the wall in the game """
