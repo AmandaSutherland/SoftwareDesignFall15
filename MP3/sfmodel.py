@@ -24,6 +24,7 @@ class SwimFishModel:
         self.leftWall = Wall((205,133,63),480,50,0,0)
         self.rightWall = Wall((205,133,63),480,50,640-64,0)
         self.monsters = []
+        self.choices = ['images/octopus1_png.png', 'images/crab1.png', 'images/jellyfish.png', 'images/shark.png', 'images/stingray.png']
 
         # for monster in self.monsters:
         #     if self.fish.rect.colliderect(monster.rect):
@@ -81,7 +82,7 @@ class Monster:
         #choose to move right or left
         new_pose = randint(-1,1)
         #how many sections the width should be split into
-        screen_width_sections = 10
+        screen_width_sections = 5
         #move the byte 1 right or left 
         byte_updated = choose_byte + (new_pose*screen_width_sections)
         #get width of pixels
@@ -94,7 +95,7 @@ class Monster:
         self.rect.x = monster_pose
         ##moving monster down
         #how many sections the height should be split into
-        screen_height_sections = 30 
+        screen_height_sections = 50 
         #height of pixels
         height_pixel = size[1]/screen_height_sections 
         #move monsters down 10 pixels at a time
@@ -102,7 +103,7 @@ class Monster:
         # height_pixel = size[1]/20 
         #move monsters down
         self.y = self.y + 10
-        self.rect.y = self.rect.y+10+height_pixel
+        self.rect.y = self.y
         print self.y
 
 class Fish:
