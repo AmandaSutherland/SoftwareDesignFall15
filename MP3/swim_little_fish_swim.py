@@ -31,7 +31,6 @@ if __name__ == '__main__':
     model = SwimFishModel()
     view = SwimFishView(model, screen)
     controller = SwimFishMouseController(model, view)
-    # controller = SwimFishKeyboardController(model)
     #add choices here
     running = True
     playing = True
@@ -57,15 +56,12 @@ if __name__ == '__main__':
                         pygame.quit()
                 elif event.type == MOUSEMOTION:
                     controller.handle_mouse_event(event)
-                    # controller.handle_collision()
-                # if event.type == KEYDOWN:
-                #     controller.handle_key_event(event)
             #control the monsters's spawning
             if now - last_monster_spawn >= 24/(level+5):
                 last_monster_spawn = now
                 for x in range(100,620,310):
                     choice = model.choices[random.randint(0, 4)]
-                    monster = Monster(100, 100, choice, x, 0)
+                    monster = Monster(90, 90, choice, x, 0)
                     model.monsters.append(monster)
             #control the monsters' movement
             if now - time_since_last_movement >= 0.15:
