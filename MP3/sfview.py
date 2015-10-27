@@ -33,12 +33,12 @@ class SwimFishView:
         # pygame.draw.circle(self.screen, pygame.Color(self.model.fish.color[0],self.model.fish.color[1],self.model.fish.color[2]), (int(self.model.fish.x),int(self.model.fish.y)),int(self.model.fish.width)/4,0)
         # pygame.draw.circle(self.screen, ocean_blue,(int(self.model.fish.x),int(self.model.fish.y-self.model.fish.width*0.6)),7,0) # Draws the mouth
         pygame.draw.circle(self.screen, (0,20,20),(int(self.model.fish.x+self.model.fish.width*0.25),int(self.model.fish.y-self.model.fish.width*0.25)),4,0) # Draws the eye
-        #pygame.draw.rect(self.screen, (255,255,255), self.model.fish.rect, 1)
+        pygame.draw.rect(self.screen, (255,255,255), self.model.fish.rect, 1)
         for monster in self.model.monsters:
             self.screen.blit(monster.scale,((int(monster.x)),int(monster.y)))
             # self.screen.blit(self.model.monster.img,((int(self.model.monster.x)),int(self.model.monster.y)))
             # pygame.draw.rect(self.screen, pygame.Color(monster.color[0],monster.color[1],monster.color[2]),pygame.Rect(monster.x,monster.y,monster.width,monster.height))
-            #pygame.draw.rect(self.screen, (255,255,255), monster.rect, 1)
+            pygame.draw.rect(self.screen, (255,255,255), monster.rect, 1)
         # Draws the ocean beds
         img1=pygame.image.load('images/beach.jpg') 
         self.screen.blit(img1,(self.model.leftWall.x,self.model.leftWall.y))

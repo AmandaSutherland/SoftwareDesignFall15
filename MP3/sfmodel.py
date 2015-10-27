@@ -72,13 +72,13 @@ class Monster:
         self.rect.x = monster_pose
         ##moving monster down
         #how many sections the height should be split into
-        screen_height_sections = 50 
+        screen_height_sections = 60 
         #height of pixels
         height_pixel = size[1]/screen_height_sections 
         #move monsters down
         self.y = self.y + height_pixel    
         # self.y = self.y + 10
-        self.rect.y = self.rect.y+10
+        self.rect.y = self.rect.y+height_pixel
 
 class Fish:
     """ Encodes the state of the fish in the game """
