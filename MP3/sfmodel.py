@@ -102,7 +102,7 @@ class Monster:
         # height_pixel = size[1]/20 
         #move monsters down
         self.y = self.y + 10
-        self.rect.y = self.rect.y+10
+        self.rect.y = self.rect.y+10+height_pixel
         print self.y
 
 class Fish:
