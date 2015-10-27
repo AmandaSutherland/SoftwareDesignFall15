@@ -52,37 +52,14 @@ class Monster:
   
         #size of the screen. should be better defined, since it's currently in two places
         size = [640,480] 
-        
-        ##code for byte method
-        # ##setting up to make them move
-        # #choose a random interger within the bounds of those lists
-        # choose_byte = random.randint(0,7)
-        # #choosing a starting position for monsters
-        # monster_start_pose = 2**choose_byte
-        # ##moving left or right
-        # #choose to move right or left
-        # new_pose = random.randint(-1,1)
-        # #move the byte 1 right or left 
-        # byte_updated = choose_byte + new_pose
-        # #get width of pixels
-        # width_pixel = size[0]/16
-        # #monster position on screen (horizontal)
-        # monster_pose = byte_updated*width_pixel
-        # # put into the screen 
-        # self.x = monster_pose 
-        # ##moving monster down
-        # #height of pixels
-        # height_pixel = size[1]/20 
-        # #move monsters down
-        # self.y = height_pixel + 1
 
         ##setting up to make them move
         choose_byte = self.x
         ##moving left or right
         #choose to move right or left
-        new_pose = randint(-1,1)
+        new_pose = randint(-2,2)
         #how many sections the width should be split into
-        screen_width_sections = 5
+        screen_width_sections = 10
         #move the byte 1 right or left 
         byte_updated = choose_byte + (new_pose*screen_width_sections)
         #get width of pixels
@@ -98,11 +75,9 @@ class Monster:
         screen_height_sections = 50 
         #height of pixels
         height_pixel = size[1]/screen_height_sections 
-        #move monsters down 10 pixels at a time
-        self.y = self.y + height_pixel    
-        # height_pixel = size[1]/20 
         #move monsters down
-        self.y = self.y + 10
+        self.y = self.y + height_pixel    
+        # self.y = self.y + 10
         self.rect.y = self.rect.y+10
 
 class Fish:
