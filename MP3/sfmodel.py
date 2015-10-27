@@ -80,9 +80,9 @@ class Monster:
         choose_byte = self.x
         ##moving left or right
         #choose to move right or left
-        new_pose = randint(-1,1)
+        new_pose = randint(-3,3)
         #how many sections the width should be split into
-        screen_width_sections = 5
+        screen_width_sections = 10
         #move the byte 1 right or left 
         byte_updated = choose_byte + (new_pose*screen_width_sections)
         #get width of pixels
@@ -95,14 +95,13 @@ class Monster:
         self.rect.x = monster_pose
         ##moving monster down
         #how many sections the height should be split into
-        screen_height_sections = 50 
+        screen_height_sections = 60 
         #height of pixels
         height_pixel = size[1]/screen_height_sections 
         #move monsters down 10 pixels at a time
         self.y = self.y + height_pixel    
         # height_pixel = size[1]/20 
         #move monsters down
-        self.y = self.y + 10
         self.rect.y = self.y
         print self.y
 
