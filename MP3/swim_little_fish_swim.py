@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # controller = SwimFishKeyboardController(model)
 
     choices = ['images/octopus1_png.png', 'images/crab1.png', 'images/jellyfish.png', 'images/shark.png', 'images/stingray.png']
-
+    # move this
     running = True
     playing = True
     eaten = False
@@ -44,6 +44,8 @@ if __name__ == '__main__':
     time_since_last_movement = init
     counter = 0
     view.init_screen()
+    time.sleep(2)
+    view.rules()
     time.sleep(5)
     while running:
         while playing and not eaten:
@@ -60,7 +62,7 @@ if __name__ == '__main__':
                 # if event.type == KEYDOWN:
                 #     controller.handle_key_event(event)
             #control the monsters's spawning
-            if now - last_monster_spawn >= 2.5:
+            if now - last_monster_spawn >= 5:
                 last_monster_spawn = now
                 for x in range(100,620,310):
                     choice = choices[random.randint(0, 4)]
@@ -78,7 +80,7 @@ if __name__ == '__main__':
                 init = time.time()
             if (now-init >= 10):
                 view.level_up()
-                time.sleep(5)
+                time.sleep(3)
                 counter = 0
                 init = time.time()
             time.sleep(0.01)
@@ -92,6 +94,6 @@ if __name__ == '__main__':
                 counter += 1;
             else:
                 view.lost()
-                time.sleep(5)
+                time.sleep(3)
                 sound.stop()
                 pygame.quit()

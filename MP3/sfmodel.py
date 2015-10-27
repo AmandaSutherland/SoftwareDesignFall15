@@ -42,7 +42,8 @@ class Monster:
         self.x = x
         self.y = y
         #Adjust the positions of rectangles surrounding the monsters to give a smoother game play experience
-        self.rect = pygame.Rect(x+35,y+20,width-15,height)
+        self.rect = pygame.Rect(x+60,y+10,width-15,height-15)
+        #self.rect = pygame.Rect(x,y,width,height)
 
     def move_monster(self):
         """This describes how the monsters move, which is then called in swim_little_fish_swim.py.
@@ -89,6 +90,8 @@ class Monster:
         monster_pose = byte_updated
         # put into the screen 
         self.x = monster_pose 
+        #showing monsters' rectangle
+        self.rect.x = monster_pose
         ##moving monster down
         #how many sections the height should be split into
         screen_height_sections = 30 
@@ -96,6 +99,11 @@ class Monster:
         height_pixel = size[1]/screen_height_sections 
         #move monsters down 10 pixels at a time
         self.y = self.y + height_pixel    
+        # height_pixel = size[1]/20 
+        #move monsters down
+        self.y = self.y + 10
+        self.rect.y = self.rect.y+10
+        print self.y
 
 class Fish:
     """ Encodes the state of the fish in the game """
@@ -105,7 +113,7 @@ class Fish:
         self.width = width
         self.x = x
         self.y = y
-        self.rect = pygame.Rect(x+20,y+20,width,height)
+        self.rect = pygame.Rect(x,y,width,height+15)
 
 class Wall:
    """ Encodes the state of the wall in the game """
