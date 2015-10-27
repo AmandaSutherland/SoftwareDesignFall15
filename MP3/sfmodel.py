@@ -19,16 +19,6 @@ class SwimFishModel:
     """ Encodes the game state """
     def __init__(self):
         now = time.time()
-        # self.monsters = []
-        # choices = ['images/octopus1_png.png','images/crab1.png']
-        # #wait 3 seconds until game starts
-        # if (time.time()- now >= 5):
-        #     for x in range(100,620,310):
-        #         choice = choices[random.randint(0, 1)]
-        #         monster = Monster(100, 100, choice, x, 120)
-        #         self.monsters.append(monster)
-
-        #updating time so we can spawn after 3 seconds again
         now = time.time()
         self.fish = Fish((209, 95, 238), 60, 50, 200, 450)
         self.leftWall = Wall((205,133,63),480,50,0,0)
@@ -48,25 +38,20 @@ class Monster:
         self.height = height
         self.width = width
         self.img = pygame.image.load(img)
-        # self.scale = self.scaling(height,width,factor)
         self.scale = pygame.transform.scale(self.img, (int(width), int(height)))
-        # self.scale = pygame.transform.scale(surface_oct1, (width, height)) 
         self.x = x
         self.y = y
         #Adjust the positions of rectangles surrounding the monsters to give a smoother game play experience
         self.rect = pygame.Rect(x+35,y+20,width-15,height)
 
-    # def initiate_monster(self):
-    #     now = time.time()
-    #     self.monster = Monster(100,100,'images/octopus1_png.png',x,120)
-
-
-    def move_monster(self): 
-        #play with bitwise operators
-
+    def move_monster(self):
+        """This describes how the monsters move, which is then called in swim_little_fish_swim.py.
+        """
+  
         #size of the screen. should be better defined, since it's currently in two places
         size = [640,480] 
         
+        ##code for byte method
         # ##setting up to make them move
         # #choose a random interger within the bounds of those lists
         # choose_byte = random.randint(0,7)
@@ -94,23 +79,23 @@ class Monster:
         ##moving left or right
         #choose to move right or left
         new_pose = randint(-1,1)
+        #how many sections the width should be split into
+        screen_width_sections = 10
         #move the byte 1 right or left 
-        byte_updated = choose_byte + (new_pose*20)
+        byte_updated = choose_byte + (new_pose*screen_width_sections)
         #get width of pixels
         # width_pixel = size[0]/16
         #monster position on screen (horizontal)
         monster_pose = byte_updated
         # put into the screen 
         self.x = monster_pose 
-        # print self.x
         ##moving monster down
+        #how many sections the height should be split into
+        screen_height_sections = 30 
         #height of pixels
-        # height_pixel = size[1]/20 
-        #move monsters down
-        self.y = self.y + 10
-        print self.y
-
-        
+        height_pixel = size[1]/screen_height_sections 
+        #move monsters down 10 pixels at a time
+        self.y = self.y + height_pixel    
 
 class Fish:
     """ Encodes the state of the fish in the game """
