@@ -108,6 +108,6 @@ class SwimFishView:
         game_over = myfont.render("GAME OVER", 1, (47,79,79))
         bye = myfont.render("BYE", 1, (47,79,79))
         self.screen.blit(lost, (110, 180))
-        self.screen.blit(game_over, (200, 240))
-        self.screen.blit(bye, (250, 300))
+        self.screen.blit(game_over, (220, 240))
+        self.screen.blit(bye, (270, 300))
         pygame.display.update()

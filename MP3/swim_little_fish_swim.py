@@ -61,14 +61,14 @@ if __name__ == '__main__':
                 # if event.type == KEYDOWN:
                 #     controller.handle_key_event(event)
             #control the monsters's spawning
-            if now - last_monster_spawn >= 18/(level+5):
+            if now - last_monster_spawn >= 24/(level+5):
                 last_monster_spawn = now
                 for x in range(100,620,310):
                     choice = model.choices[random.randint(0, 4)]
                     monster = Monster(100, 100, choice, x, 0)
                     model.monsters.append(monster)
             #control the monsters' movement
-            if now - time_since_last_movement >= 0.2:
+            if now - time_since_last_movement >= 0.15:
                 time_since_last_movement = now 
                 for monster in model.monsters:
                     monster.move_monster()
@@ -77,10 +77,11 @@ if __name__ == '__main__':
             if (controller.handle_collision()):
                 eaten = True
                 init = time.time()
-            if (now-init >= 25):
+            if (now-init >= 20):
                 level += 1
                 view.level_up()
                 time.sleep(3)
+                model.monsters = []
                 counter = 0
                 init = time.time()
             time.sleep(0.01)
@@ -91,6 +92,7 @@ if __name__ == '__main__':
                 eaten = False
                 playing = True
                 time.sleep(3)
+                model.monsters = []
                 counter += 1;
             else:
                 view.lost()
