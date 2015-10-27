@@ -33,7 +33,7 @@ if __name__ == '__main__':
     controller = SwimFishMouseController(model, view)
     # controller = SwimFishKeyboardController(model)
 
-    choices = ['images/octopus1_png.png', 'images/crab1.png', 'images/jellyfish.png', 'images/shark.png', 'images/stingray.png']
+    choices = ['images/octopus1_png.png', 'images/crab1.png']#, 'images/jellyfish.png', 'images/shark.png', 'images/stingray.png']
 
     running = True
     playing = True
@@ -44,6 +44,8 @@ if __name__ == '__main__':
     time_since_last_movement = init
     counter = 0
     view.init_screen()
+    time.sleep(2)
+    view.rules()
     time.sleep(5)
     while running:
         while playing and not eaten:
@@ -60,11 +62,11 @@ if __name__ == '__main__':
                 # if event.type == KEYDOWN:
                 #     controller.handle_key_event(event)
             #control the monsters's spawning
-            if now - last_monster_spawn >= 3:
+            if now - last_monster_spawn >= 5:
                 last_monster_spawn = now
                 for x in range(100,620,310):
-                    choice = choices[random.randint(0, 4)]
-                    monster = Monster(100, 100, choice, x, 120)
+                    choice = choices[random.randint(0, 1)]
+                    monster = Monster(100, 100, choice, x, 0)
                     model.monsters.append(monster)
             #control the monsters' movement
             if now - time_since_last_movement >= 0.1:

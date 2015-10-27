@@ -51,14 +51,24 @@ class SwimFishView:
     def init_screen(self):
         pygame.draw.rect(self.screen, (154,255,154),(0,0,640,480),0)
         # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
-        myfont = pygame.font.SysFont("monospace", 25)
+        myfont = pygame.font.SysFont("monospace", 30)
 
         # render text
         welcome = myfont.render("WELCOME TO SWIM LITTLE FISH SWIM!", 1, (47,79,79))
-        rules = myfont.render("Avoid the MONSTERS and STAY ALIVE", 1, (47,79,79))
+        self.screen.blit(welcome, (30, 210))
+        pygame.display.update()
+
+    def rules(self):
+        pygame.draw.rect(self.screen, (154,255,154),(0,0,640,480),0)
+        # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
+        myfont = pygame.font.SysFont("monospace", 25)
+
+        # render text
+        rules1 = myfont.render("Avoid the MONSTERS and STAY ALIVE", 1, (47,79,79))
+        rules2 = myfont.render("You have four lives", 1, (47,79,79))
         game = myfont.render("Your fist game starts in 5 seconds", 1, (47,79,79))
-        self.screen.blit(welcome, (70, 150))
-        self.screen.blit(rules, (68, 200))
+        self.screen.blit(rules1, (70, 150))
+        self.screen.blit(rules2, (160, 200))
         self.screen.blit(game, (65, 250))
         pygame.display.update()
 

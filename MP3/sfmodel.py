@@ -54,7 +54,8 @@ class Monster:
         self.x = x
         self.y = y
         #Adjust the positions of rectangles surrounding the monsters to give a smoother game play experience
-        self.rect = pygame.Rect(x+35,y+20,width-15,height)
+        self.rect = pygame.Rect(x+60,y+10,width-30,height-30)
+        #self.rect = pygame.Rect(x,y,width,height)
 
     # def initiate_monster(self):
     #     now = time.time()
@@ -102,12 +103,14 @@ class Monster:
         monster_pose = byte_updated
         # put into the screen 
         self.x = monster_pose 
+        self.rect.x = monster_pose
         # print self.x
         ##moving monster down
         #height of pixels
         # height_pixel = size[1]/20 
         #move monsters down
         self.y = self.y + 10
+        self.rect.y = self.rect.y+10
         print self.y
 
         
