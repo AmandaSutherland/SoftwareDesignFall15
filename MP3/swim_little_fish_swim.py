@@ -32,9 +32,7 @@ if __name__ == '__main__':
     view = SwimFishView(model, screen)
     controller = SwimFishMouseController(model, view)
     # controller = SwimFishKeyboardController(model)
-
-    choices = ['images/octopus1_png.png', 'images/crab1.png', 'images/jellyfish.png', 'images/shark.png', 'images/stingray.png']
-    # move this
+    #add choices here
     running = True
     playing = True
     eaten = False
@@ -65,7 +63,7 @@ if __name__ == '__main__':
             if now - last_monster_spawn >= 5:
                 last_monster_spawn = now
                 for x in range(100,620,310):
-                    choice = choices[random.randint(0, 4)]
+                    choice = model.choices[random.randint(0, 4)]
                     monster = Monster(100, 100, choice, x, 0)
                     model.monsters.append(monster)
             #control the monsters' movement
