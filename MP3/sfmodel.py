@@ -26,15 +26,9 @@ class SwimFishModel:
         self.monsters = []
         self.choices = ['images/octopus1_png.png', 'images/crab1.png', 'images/jellyfish.png', 'images/shark.png', 'images/stingray.png']
 
-        # for monster in self.monsters:
-        #     if self.fish.rect.colliderect(monster.rect):
-        #         raise SystemExit, "You lose!"
-
 class Monster:
     """ Encodes the state of a monster in the game """
-    # def scaling(self,height,width,factor):
-        # img_scaled = pygame.transform.scale(self.surface_oct1, (int(factor*width), int(factor*height)))
-
+    
     def __init__(self,height,width,img,x,y):
         self.height = height
         self.width = width
@@ -44,8 +38,7 @@ class Monster:
         self.y = y
         #Adjust the positions of rectangles surrounding the monsters to give a smoother game play experience
         self.rect = pygame.Rect(x+60,y+10,width-15,height-15)
-        #self.rect = pygame.Rect(x,y,width,height)
-
+        
     def move_monster(self):
         """This describes how the monsters move, which is then called in swim_little_fish_swim.py.
         """
