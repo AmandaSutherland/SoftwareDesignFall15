@@ -16,10 +16,10 @@ class SwimFishMouseController:
     
     def handle_mouse_event(self,event):
         if event.type == MOUSEMOTION:
-            self.model.fish.x = event.pos[0] #- self.model.fish.width/2.0
-            self.model.fish.y = event.pos[1] #- self.model.fish.height/2.0
-            self.model.fish.rect.x = event.pos[0]-.5*self.model.fish.width #- self.model.fish.width/2.0
-            self.model.fish.rect.y = event.pos[1]-.5*self.model.fish.height #- self.model.fish.height/2.0
+            self.model.fish.x = event.pos[0]
+            self.model.fish.y = event.pos[1]
+            self.model.fish.rect.x = event.pos[0]-.5*self.model.fish.width
+            self.model.fish.rect.y = event.pos[1]-.5*self.model.fish.height
 
     def handle_collision(self):
         for monster in self.model.monsters:

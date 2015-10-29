@@ -6,31 +6,30 @@ Runs interactive video game Swim Little Fish Swim
 
 last modified: 10-18-15
 """
-
 import pygame
 from pygame.locals import *
-import sfcontroller
 from sfcontroller import *
-import sfmodel
 from sfmodel import *
-import sfview
 from sfview import *
 import random
-import math
 import time
-
-            
+    
 if __name__ == '__main__':
     pygame.init()
+    # Define screen size and initialize it
     size = (640,480)
     screen = pygame.display.set_mode(size)
+    # Start the background music and make it loop infinitely with a 40% volume
     sound = pygame.mixer.Sound("sounds/POL-coconut-land-short.wav")
     sound.play(loops = -1)
     sound.set_volume(0.4)
 
+    # Instantiate the model, view, and controller classes
     model = SwimFishModel()
     view = SwimFishView(model, screen)
     controller = SwimFishMouseController(model, view)
+
+    # Variables to keep track of the game state
     running = True
     playing = True
     eaten = False
@@ -40,10 +39,13 @@ if __name__ == '__main__':
     last_monster_spawn = init
     time_since_last_movement = init
     counter = 0
+
+    # Display welcome and rules screen
     view.init_screen()
     time.sleep(2)
     view.rules()
     time.sleep(5)
+
     while running:
         while playing and not eaten:
             now = time.time()
@@ -51,19 +53,20 @@ if __name__ == '__main__':
                 if event.type == QUIT:
                     running = False
                 elif event.type == KEYDOWN:
-                    if event.key == K_ESCAPE:   #event is escape key
+                    if event.key == K_ESCAPE:
                         pygame.quit()
                 elif event.type == MOUSEMOTION:
                     controller.handle_mouse_event(event)
-            #control the monsters's spawning
-            if now - last_monster_spawn >= 24/(level+5):
+            #control the monsters' spawning
+            if now - last_monster_spawn >= 4:
                 last_monster_spawn = now
                 for x in range(100,620,310):
                     choice = model.choices[random.randint(0, 4)]
                     monster = Monster(90, 90, choice, x, 0)
                     model.monsters.append(monster)
-            #control the monsters' movement
-            if now - time_since_last_movement >= 0.15:
+            #control the monsters' movements
+            #the speed at which they move is inversely proportional to the level
+            if now - time_since_last_movement >= (10.0/(5*level+60)):
                 time_since_last_movement = now 
                 for monster in model.monsters:
                     monster.move_monster()
@@ -72,6 +75,7 @@ if __name__ == '__main__':
             if (controller.handle_collision()):
                 eaten = True
                 init = time.time()
+            # Level up after surviving 20 seconds
             if (now-init >= 20):
                 level += 1
                 view.level_up()
@@ -82,6 +86,7 @@ if __name__ == '__main__':
             time.sleep(0.01)
 
         while eaten:
+            # Switch to eaten view
             if (counter <= 3):
                 view.eaten()
                 eaten = False
@@ -89,6 +94,7 @@ if __name__ == '__main__':
                 time.sleep(3)
                 model.monsters = []
                 counter += 1;
+            # Switch to lost view and quit
             else:
                 view.lost()
                 time.sleep(3)

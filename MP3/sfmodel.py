@@ -4,7 +4,7 @@ Model of interactive video game Swim Little Fish Swim
 
 @author: Amanda Sutherland, Ziyu (Selina) Wang
 
-last modified: 10-18-15
+last modified: 10-29-15
 """
 import pygame
 from pygame.locals import *
@@ -33,7 +33,7 @@ class Monster:
     def move_monster(self):
         """ Describes how the monsters and their encapsulating rectangles move """
         # choose to move left or right
-        new_pose = randint(-3,3)
+        new_pose = randint(-2,2)
         screen_width_sections = 10
         self.x = self.x + (new_pose*screen_width_sections)
         self.rect.x = self.x

@@ -25,33 +25,25 @@ class SwimFishView:
         points.append((self.model.fish.x-20,self.model.fish.y+45))
         points.append((self.model.fish.x+20,self.model.fish.y+45))
         pygame.draw.polygon(self.screen, pygame.Color(self.model.fish.color[0],self.model.fish.color[1],self.model.fish.color[2]),points,0)
-        pygame.draw.ellipse(self.screen, pygame.Color(self.model.fish.color[0],self.model.fish.color[1],self.model.fish.color[2]),pygame.Rect(self.model.fish.x-self.model.fish.width/2,self.model.fish.y-self.model.fish.height/2,self.model.fish.width,self.model.fish.height),0)
-        pygame.draw.circle(self.screen, (0,20,20),(int(self.model.fish.x+self.model.fish.width*0.25),int(self.model.fish.y-self.model.fish.width*0.25)),4,0) # Draws the eye
-        # Draws the encapsulating rectangle around the fish
-        pygame.draw.rect(self.screen, (255,255,255), self.model.fish.rect, 1)
-        # Draws the monsters and their encapsulating rectangles
+        pygame.draw.ellipse(self.screen, pygame.Color(self.model.fish.color[0],self.model.fish.color[1],self.model.fish.color[2]),
+        pygame.Rect(self.model.fish.x-self.model.fish.width/2,self.model.fish.y-self.model.fish.height/2,self.model.fish.width,self.model.fish.height),0)
+        pygame.draw.circle(self.screen, (0,20,20),(int(self.model.fish.x+self.model.fish.width*0.25),int(self.model.fish.y-self.model.fish.width*0.25)),4,0)
+        # Draws the monsters
         for monster in self.model.monsters:
             self.screen.blit(monster.scale,((int(monster.x)),int(monster.y)))
-            pygame.draw.rect(self.screen, (255,255,255), monster.rect, 1)
         pygame.display.update()
 
 
     def init_screen(self):
         pygame.draw.rect(self.screen, (154,255,154),(0,0,640,480),0)
-        # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
         myfont = pygame.font.SysFont("monospace", 30)
-
-        # render text
         welcome = myfont.render("WELCOME TO SWIM LITTLE FISH SWIM!", 1, (47,79,79))
         self.screen.blit(welcome, (30, 210))
         pygame.display.update()
 
     def rules(self):
         pygame.draw.rect(self.screen, (154,255,154),(0,0,640,480),0)
-        # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
         myfont = pygame.font.SysFont("monospace", 25)
-
-        # render text
         rules1 = myfont.render("AVOID the MONSTERS and STAY ALIVE", 1, (47,79,79))
         rules2 = myfont.render("you have four lives", 1, (47,79,79))
         game = myfont.render("your first game starts in 5 seconds", 1, (47,79,79))
@@ -62,10 +54,7 @@ class SwimFishView:
 
     def eaten(self):
         pygame.draw.rect(self.screen, (255,127,80),(0,0,640,480),0)
-        # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
         myfont = pygame.font.SysFont("monospace", 25)
-
-        # render text
         label = myfont.render("YOU GOT EATEN BY A MONSTER!", 1, (47,79,79))
         next_game = myfont.render("your next game starts in 3 seconds", 1, (47,79,79))
         self.screen.blit(label, (110, 180))
@@ -75,11 +64,8 @@ class SwimFishView:
 
     def level_up(self):
         pygame.draw.rect(self.screen, (175,238,238),(0,0,640,480),0)
-         # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
         myfont = pygame.font.SysFont("monospace", 30)
         self.model.monsters = []
-
-        # render text
         label = myfont.render("YOU SURVIVED THE DANGEROUS SEA!", 1, (47,79,79))
         next_game = myfont.render("Next Level starts in 3 seconds", 1, (47,79,79))
         self.screen.blit(label, (50, 180))
@@ -88,10 +74,7 @@ class SwimFishView:
 
     def lost(self):
         pygame.draw.rect(self.screen, (255,215,0),(0,0,640,480),0)
-         # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
         myfont = pygame.font.SysFont("monospace", 30)
-
-        # render text
         lost = myfont.render("YOU GOT EATEN 5 TIMES!", 1, (47,79,79))
         game_over = myfont.render("GAME OVER", 1, (47,79,79))
         bye = myfont.render("BYE", 1, (47,79,79))
