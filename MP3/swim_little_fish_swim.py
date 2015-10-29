@@ -11,7 +11,7 @@ from pygame.locals import *
 from sfcontroller import *
 from sfmodel import *
 from sfview import *
-import random
+from random import randint
 import time
     
 if __name__ == '__main__':
@@ -58,15 +58,20 @@ if __name__ == '__main__':
                 elif event.type == MOUSEMOTION:
                     controller.handle_mouse_event(event)
             #control the monsters' spawning
-            if now - last_monster_spawn >= 4:
+            #the speed at which they spawn is inversely proportional to the level
+            if now - last_monster_spawn >= 50.0/(2*level+10):
                 last_monster_spawn = now
-                for x in range(100,620,310):
-                    choice = model.choices[random.randint(0, 4)]
-                    monster = Monster(90, 90, choice, x, 0)
+                #spawn the monsters at random places
+                range_left = randint(75,200)
+                range_right = randint(450,550)
+                for x in range(range_left,range_right,range_right-range_left-50):
+                    #randomly choose one of the monsters to spawn
+                    choice = model.choices[randint(0, 4)]
+                    monster = Monster(90, 90, choice, x, -100)
                     model.monsters.append(monster)
             #control the monsters' movements
             #the speed at which they move is inversely proportional to the level
-            if now - time_since_last_movement >= (10.0/(5*level+60)):
+            if now - time_since_last_movement >= 10.0/(5*level+60):
                 time_since_last_movement = now 
                 for monster in model.monsters:
                     monster.move_monster()
@@ -81,7 +86,7 @@ if __name__ == '__main__':
                 view.level_up()
                 time.sleep(3)
                 model.monsters = []
-                counter = 0
+                # counter = 0
                 init = time.time()
             time.sleep(0.01)
 

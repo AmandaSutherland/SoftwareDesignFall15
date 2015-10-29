@@ -45,10 +45,10 @@ class SwimFishView:
         pygame.draw.rect(self.screen, (154,255,154),(0,0,640,480),0)
         myfont = pygame.font.SysFont("monospace", 25)
         rules1 = myfont.render("AVOID the MONSTERS and STAY ALIVE", 1, (47,79,79))
-        rules2 = myfont.render("you have four lives", 1, (47,79,79))
+        rules2 = myfont.render("you have 5 lives", 1, (47,79,79))
         game = myfont.render("your first game starts in 5 seconds", 1, (47,79,79))
         self.screen.blit(rules1, (70, 150))
-        self.screen.blit(rules2, (160, 200))
+        self.screen.blit(rules2, (190, 200))
         self.screen.blit(game, (65, 250))
         pygame.display.update()
 
