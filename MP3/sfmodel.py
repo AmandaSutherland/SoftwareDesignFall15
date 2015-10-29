@@ -27,7 +27,8 @@ class SwimFishModel:
         self.choices = ['images/octopus1_png.png', 'images/crab1.png', 'images/jellyfish.png', 'images/shark.png', 'images/stingray.png']
 
 class Monster:
-    """ Encodes the state of a monster in the game """
+    """ Encodes the state of a monster in the game 
+    """
     
     def __init__(self,height,width,img,x,y):
         self.height = height
@@ -51,26 +52,18 @@ class Monster:
         ##moving left or right
         #choose to move right or left
         new_pose = randint(-2,2)
-        #how many sections the width should be split into
         screen_width_sections = 10
-        #move the byte 1 right or left 
         byte_updated = choose_byte + (new_pose*screen_width_sections)
-        #get width of pixels
-        # width_pixel = size[0]/16
         #monster position on screen (horizontal)
         monster_pose = byte_updated
-        # put into the screen 
         self.x = monster_pose 
         #showing monsters' rectangle
         self.rect.x = monster_pose
         ##moving monster down
-        #how many sections the height should be split into
         screen_height_sections = 60 
         #height of pixels
         height_pixel = size[1]/screen_height_sections 
-        #move monsters down
         self.y = self.y + height_pixel    
-        # self.y = self.y + 10
         self.rect.y = self.rect.y+height_pixel
 
 class Fish:
