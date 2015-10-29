@@ -31,7 +31,6 @@ if __name__ == '__main__':
     model = SwimFishModel()
     view = SwimFishView(model, screen)
     controller = SwimFishMouseController(model, view)
-    #add choices here
     running = True
     playing = True
     eaten = False

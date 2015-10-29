@@ -4,13 +4,11 @@ GUI of interactive video game Swim Little Fish Swim
 
 @author: Amanda Sutherland, Ziyu (Selina) Wang
 
-last modified: 10-18-15
+last modified: 10-29-15
 """
-
 import pygame
 from pygame.locals import *
 import math
-
 
 class SwimFishView:
     """ A view of swim little fish swim rendered in a Pygame window """
@@ -29,14 +27,12 @@ class SwimFishView:
         pygame.draw.polygon(self.screen, pygame.Color(self.model.fish.color[0],self.model.fish.color[1],self.model.fish.color[2]),points,0)
         pygame.draw.ellipse(self.screen, pygame.Color(self.model.fish.color[0],self.model.fish.color[1],self.model.fish.color[2]),pygame.Rect(self.model.fish.x-self.model.fish.width/2,self.model.fish.y-self.model.fish.height/2,self.model.fish.width,self.model.fish.height),0)
         pygame.draw.circle(self.screen, (0,20,20),(int(self.model.fish.x+self.model.fish.width*0.25),int(self.model.fish.y-self.model.fish.width*0.25)),4,0) # Draws the eye
+        # Draws the encapsulating rectangle around the fish
         pygame.draw.rect(self.screen, (255,255,255), self.model.fish.rect, 1)
+        # Draws the monsters and their encapsulating rectangles
         for monster in self.model.monsters:
             self.screen.blit(monster.scale,((int(monster.x)),int(monster.y)))
             pygame.draw.rect(self.screen, (255,255,255), monster.rect, 1)
-        # Draws the ocean beds
-        img1=pygame.image.load('images/beach.jpg') 
-        self.screen.blit(img1,(self.model.leftWall.x,self.model.leftWall.y))
-        self.screen.blit(img1,(self.model.rightWall.x,self.model.rightWall.y))
         pygame.display.update()
 
 
