@@ -11,9 +11,11 @@ from pygame.locals import *
 from sfcontroller import *
 from sfmodel import *
 from sfview import *
+
 from random import randint
 import time
-    
+
+
 if __name__ == '__main__':
     pygame.init()
     # Define screen size and initialize it
