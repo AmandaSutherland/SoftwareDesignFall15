@@ -24,27 +24,29 @@ if __name__ == '__main__':
     sound.play(loops = -1)
     sound.set_volume(0.4)
 
-    # Instantiate the model, view, and controller classes
-    model = SwimFishModel()
-    view = SwimFishView(model, screen)
-    controller = SwimFishMouseController(model, view)
-
     # Variables to keep track of the game state
     running = True
     playing = True
     eaten = False
     playAgain = False
     level = 1
-    init = time.time()
-    last_monster_spawn = init
-    time_since_last_movement = init
-    counter = 0
+    countdown = 20
+    lives = 5
+
+    # Instantiate the model, view, and controller classes
+    model = SwimFishModel()
+    view = SwimFishView(model, screen, level, countdown, lives)
+    controller = SwimFishMouseController(model, view)
 
     # Display welcome and rules screen
     view.init_screen()
     time.sleep(2)
     view.rules()
     time.sleep(5)
+    init = time.time()
+    last_monster_spawn = init
+    time_since_last_movement = init
+    timer = init
 
     while running:
         while playing and not eaten:
@@ -77,28 +79,42 @@ if __name__ == '__main__':
                     monster.move_monster()
             view.draw()
             
+            # If collision happened, reset the timer
             if (controller.handle_collision()):
                 eaten = True
-                init = time.time()
+
+            #  Update countdown
+            if (now-timer >= 1):
+                countdown -= 1
+                view = SwimFishView(model, screen, level, countdown, lives)
+                view.draw()
+                timer = now
+
             # Level up after surviving 20 seconds
             if (now-init >= 20):
                 level += 1
+                view = SwimFishView(model, screen, level, countdown, lives)
                 view.level_up()
                 time.sleep(3)
                 model.monsters = []
                 # counter = 0
                 init = time.time()
+                countdown = 20
             time.sleep(0.01)
 
         while eaten:
             # Switch to eaten view
-            if (counter <= 3):
+            if (lives >= 2):
+                view = SwimFishView(model, screen, level, countdown, lives)
                 view.eaten()
                 eaten = False
                 playing = True
                 time.sleep(3)
                 model.monsters = []
-                counter += 1;
+                init = time.time()
+                lives -= 1;
+                countdown = 20
+
             # Switch to lost view and quit
             else:
                 view.lost()

@@ -12,9 +12,12 @@ import math
 
 class SwimFishView:
     """ A view of swim little fish swim rendered in a Pygame window """
-    def __init__(self, model, screen):
+    def __init__(self, model, screen, level, countdown, lives):
         self.model = model
         self.screen = screen
+        self.level = level
+        self.countdown = countdown
+        self.lives = lives
 
     def draw(self):
         ocean_floor = pygame.image.load('images/ocean.jpg') 
@@ -31,6 +34,22 @@ class SwimFishView:
         # Draws the monsters
         for monster in self.model.monsters:
             self.screen.blit(monster.scale,((int(monster.x)),int(monster.y)))
+        pygame.draw.rect(self.screen, (175,238,238),(550,0,90,25),0)
+        myfont = pygame.font.SysFont("monospace", 16)
+        level = myfont.render("Level " + str(self.level), 1, (47,79,79))
+        timeleft = myfont.render(str(self.countdown), 1, (47,79,79))
+        if self.level < 10:
+            self.screen.blit(level, (562, 3))
+        if self.level >= 10:
+            self.screen.blit(level, (556, 3))
+        pygame.draw.rect(self.screen, (175,238,238),(0,0,30,25),0)
+        if self.countdown >= 10:
+            self.screen.blit(timeleft, (5, 3))
+        if self.countdown < 10:
+            self.screen.blit(timeleft, (10, 3))
+        pygame.draw.rect(self.screen, (175,238,238),(505,455,135,25),0)
+        livesleft = myfont.render('Lives left:'+str(self.lives), 1, (47,79,79))
+        self.screen.blit(livesleft, (513, 458))
         pygame.display.update()
 
 
@@ -46,10 +65,12 @@ class SwimFishView:
         myfont = pygame.font.SysFont("monospace", 25)
         rules1 = myfont.render("AVOID the MONSTERS and STAY ALIVE", 1, (47,79,79))
         rules2 = myfont.render("you have 5 lives", 1, (47,79,79))
+        rules3 = myfont.render("Each game is 20 seconds", 1, (47,79,79))
         game = myfont.render("your first game starts in 5 seconds", 1, (47,79,79))
         self.screen.blit(rules1, (70, 150))
         self.screen.blit(rules2, (190, 200))
-        self.screen.blit(game, (65, 250))
+        self.screen.blit(rules3, (140, 250))
+        self.screen.blit(game, (65, 300))
         pygame.display.update()
 
     def eaten(self):
@@ -67,9 +88,9 @@ class SwimFishView:
         myfont = pygame.font.SysFont("monospace", 30)
         self.model.monsters = []
         label = myfont.render("YOU SURVIVED THE DANGEROUS SEA!", 1, (47,79,79))
-        next_game = myfont.render("Next Level starts in 3 seconds", 1, (47,79,79))
+        next_game = myfont.render("Level " + str(self.level) + " starts in 3 seconds", 1, (47,79,79))
         self.screen.blit(label, (50, 180))
-        self.screen.blit(next_game, (50, 240))
+        self.screen.blit(next_game, (75, 240))
         pygame.display.update()
 
     def lost(self):
