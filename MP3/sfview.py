@@ -77,9 +77,14 @@ class SwimFishView:
         pygame.draw.rect(self.screen, (255,127,80),(0,0,640,480),0)
         myfont = pygame.font.SysFont("monospace", 25)
         label = myfont.render("YOU GOT EATEN BY A MONSTER!", 1, (47,79,79))
+        if self.lives >= 2:
+            numlives = myfont.render("You have "+str(self.lives)+" lives left", 1, (47,79,79))
+        if self.lives <= 1:
+            numlives = myfont.render("You have "+str(self.lives)+" life left", 1, (47,79,79))
         next_game = myfont.render("your next game starts in 3 seconds", 1, (47,79,79))
-        self.screen.blit(label, (110, 180))
-        self.screen.blit(next_game, (50, 240))
+        self.screen.blit(label, (130, 150))
+        self.screen.blit(numlives, (170, 210))
+        self.screen.blit(next_game, (70, 270))
         pygame.display.update()
 
 

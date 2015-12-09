@@ -105,6 +105,7 @@ if __name__ == '__main__':
         while eaten:
             # Switch to eaten view
             if (lives >= 2):
+                lives -= 1;
                 view = SwimFishView(model, screen, level, countdown, lives)
                 view.eaten()
                 eaten = False
@@ -112,7 +113,6 @@ if __name__ == '__main__':
                 time.sleep(3)
                 model.monsters = []
                 init = time.time()
-                lives -= 1;
                 countdown = 20
 
             # Switch to lost view and quit
