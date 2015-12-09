@@ -4,7 +4,7 @@ GUI of interactive video game Swim Little Fish Swim
 
 @author: Amanda Sutherland, Ziyu (Selina) Wang
 
-last modified: 10-29-15
+last modified: 12-08-15
 """
 import pygame
 from pygame.locals import *
